@@ -9,4 +9,6 @@ I have found multiple online courses and I have decided to base my learning on t
 
 3) Step 3 is learning and understanding the underlying machine-learning techniques and trying to recognize which one is more effective and what kind of data is to be fed in which kind of model. 
 
-As of June 2020, I am still on steps 1 and 2 and amd trying my best everyday to gain as much knaowledge as possible. I will continue to push files that summarize my learning of the key concepts and the underlying code with commented explaination so anyone interested can learn from this or contribute to it to make this repository a valuable resource. 
+
+
+As of June 2020, I am still on steps 1 and 2 and amd trying my best everyday to gain as much knowledge as possible. I will continue to push files that summarize my learning of the key concepts and the underlying code with commented explaination. Many of these files contain functions that have been used in further files so the code duplication is to bare minimum. Anyone is welcome to download thjese files and import and use them in their own endeavours. So anyone interested can learn from this or contribute to it to make this repository a valuable resource. 
