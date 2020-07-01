@@ -22,12 +22,14 @@ def symbol_to_path(symbol):
 #This function accepts 3 parameters. df - the historic dataframe of the stock, date- the daterange for the plot, plot - a boolean for
 #whether the user wnats to see the plot or just wants the resulting dataframe.  
 
+
 def daily_return(df,dates, plot):
 	df_return = df.copy()
-	df_return = df_return.rename(columns = {"Adj Close" : "Daily Return"})
 	df_exp = pd.DataFrame(index = dates)
 	df_exp = df_exp.join(df_return)
 	df_exp.dropna(inplace = True)
+	df_return = df_exp
+	df_return = df_return.rename(columns = {"Adj Close" : "Daily Return"})
 	df_return[1:] = (df_exp[1:]/df_exp[:-1].values)-1
 	df_return.iloc[0] = 0
 	if(plot==True):
