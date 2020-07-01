@@ -7,6 +7,6 @@ I have found multiple online courses and I have decided to base my learning on t
 
 2) Step 2 is understanding the widely used Financial Strategies and the basic financial concepts that govern the everyday trading process. It also important to understand what are the key indicators while making a decision and also crucial to know that no-one should rely on a single indicator to make a decision. I have resorted mainly to the Bloomberg Marketing Concepts and other few online educatoinal courses to get a good hang and understanding of some of the basic concepts. 
 
-3) Steo 3 is learning and understanding the underlying machine-learning techniques and trying to recognize which one is more effective and what kind of data is to be fed in which kind of model. 
+3) Step 3 is learning and understanding the underlying machine-learning techniques and trying to recognize which one is more effective and what kind of data is to be fed in which kind of model. 
 
 As of June 2020, I am still on steps 1 and 2 and amd trying my best everyday to gain as much knaowledge as possible. I will continue to push files that summarize my learning of the key concepts and the underlying code with commented explaination so anyone interested can learn from this or contribute to it to make this repository a valuable resource. 
