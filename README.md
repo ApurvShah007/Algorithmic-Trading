@@ -1,7 +1,7 @@
 # Algorithmic_trading
 I have been deeply interested in algorithmic trading and systematic trading algorithms. This Repository contains the code of what I have learnt on the way. It starts form some basic simple statistics and will lead up to complex machine learning algorithms.
 
-I have found multiple online courses and I have decided to base my learning on the path given in the Algorithmic Trading course on Udemy.
+I have found multiple online courses and I have decided to base my learning on the path given in the Algorithmic Trading course on Udacity.
 
 1) Step 1 is identifying which stock statistics are actually important to visualize and what they mean. It is also important to get accustomed with the very powerful Pandas Library and other complementary libraries such as Matplotlib and NumPy and SciPy and Seaborn. 
 
