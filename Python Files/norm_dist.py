@@ -16,38 +16,34 @@ def symbol_to_path(symbol):
 #range is sliced out and the plot is shown. 
 #This function accepts the list of stocks and the date range of the required plot. 
 
-def norm_dist(stocks, dates):
-	df_exp = pd.DataFrame(index = dates)
-	for s in stocks:
-		path = symbol_to_path(s)
-		df = pd.read_csv(path, index_col="Date",parse_dates=True, usecols=["Date", "Adj Close"])
-		df = df.iloc[::-1]
-		df = df.rename(columns = {"Adj Close" : s})
-		#Normalizing the Ditribution
-		df =(df)/df.iloc[-1]	
-		print(df)
-		df_exp = df_exp.join(df)
-	df_exp.dropna(inplace = True)
-	df_exp.plot()
-	plt.show()
+def norm_dist(stocks, symbol, dates, plot = False):
+	df_nor = pd.DataFrame(index = dates)
+	df = df.rename(columns = {"Adj Close" : s})
+	#Normalizing the Ditribution
+	df =(df)/df.iloc[0]	
+	df_nor = df_nor.join(df)
+	df_nor.dropna(inplace = True)
+	if plot ==True:
+		df_nor.plot()
+		plt.show()
+	else:
+		return df_nor
+	
 #This function first slices out the daterange provided and then uses the first value at the 0th row of the new sliced dataframe as the normalizing value and then 
 #normalizes the entire ditribution based on that and then plots it. 
 #This function accepts the list of stocks and the date range of the required plot. 
-def norm_dist_yearwise(stocks, dates):
-	df_exp = pd.DataFrame(index = dates)
-	for s in stocks:
-		path = symbol_to_path(s)
-		df = pd.read_csv(path, index_col="Date",parse_dates=True, usecols=["Date", "Adj Close"])
-		df = df.iloc[::-1]
-		df = df.rename(columns = {"Adj Close" : s})
-		df_exp = df_exp.join(df)
-		df_exp = df_exp.dropna()
-		#Normalizing the Ditribution
-		df_exp= (df_exp)/df_exp.iloc[0]	
-	df_exp.plot()
-	plt.show()
+def norm_dist_yearwise(df, symbol, dates, plot=False):
+	df_nor = pd.DataFrame(index = dates)
+	df = df.rename(columns = {"Adj Close" : symbol})
+	df_nor = df_exp.join(df)
+	df_nor = df_exp.dropna()
+	#Normalizing the Ditribution
+	df_nor= (df_nor)/df_nor.iloc[0]
+	if (plot==True):
+		df_nor.plot()
+		plt.show()
+	else:
+		return df_nor
 
-#Smaple Run with n number of random stocks. Uncomment the following lines to see a sample run of the given functions. 
-# dates = pd.date_range('2017-01-01','2017-12-31')
-# stocks = ['AZPN', 'GOOGL']
-# norm_dist_yearwise(stocks, dates)
+	
+
