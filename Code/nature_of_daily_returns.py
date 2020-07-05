@@ -14,7 +14,7 @@ pd.options.display.float_format = '{:.5f}'.format
 
 #Assumes that the csv file is in the same folder as the 
 def symbol_to_path(symbol):
-    return os.path.join("{}.csv".format(str(symbol)))
+    return os.path.join("/Users/apurvshah/Desktop/Algorithmic_trading/Data/{}.csv".format(str(symbol)))
 
 
 # This function is useful for plotting histograms for one or more than one stock at a time. 
@@ -73,6 +73,6 @@ def plot_scatter(stocks, dates):
 
 
 #Sample Run with a random stock. Uncomment the following lines to have a sample run for the above functions.
-#dates = pd.date_range('2015-01-01','2017-12-31')
-# plot_hist_with_stats(['MSFT', 'AZPN'], dates)
+dates = pd.date_range('2015-01-01','2017-12-31')
+plot_hist_with_stats(['MSFT', 'AZPN'], dates)
 #plot_scatter([["MSFT", "AZPN"]], dates)

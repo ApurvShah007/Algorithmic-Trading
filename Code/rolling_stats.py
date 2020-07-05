@@ -15,7 +15,7 @@ pd.options.display.float_format = '{:.3f}'.format
 
 #Assumes that the csv file is in the same folder as the 
 def symbol_to_path(symbol):
-    return os.path.join("{}.csv".format(str(symbol)))
+    return os.path.join("/Users/apurvshah/Desktop/Algorithmic_trading/Data/{}.csv".format(str(symbol)))
 
 
 #This function returns or plots the daily returns of a given stock for a given time period. 

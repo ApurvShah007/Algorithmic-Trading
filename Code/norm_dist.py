@@ -10,7 +10,7 @@ pd.options.display.float_format = '{:.5f}'.format
 
 #Assumes that the csv file is in the same folder as the 
 def symbol_to_path(symbol):
-    return os.path.join("{}.csv".format(str(symbol)))
+    return os.path.join("/Users/apurvshah/Desktop/Algorithmic_trading/Data/{}.csv".format(str(symbol)))
 
 #This function treats the first ever recorded stock price to be the initial value and the rest of the ditribution is accordingly normalized. Then the selected date 
 #range is sliced out and the plot is shown. 
