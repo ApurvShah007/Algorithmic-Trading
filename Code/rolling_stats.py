@@ -22,7 +22,7 @@ def symbol_to_path(symbol):
 #This function accepts 3 parameters. df - the historic dataframe of the stock, date- the daterange for the plot, plot - a boolean for
 #whether the user wnats to see the plot or just wants the resulting dataframe.  
 
-def daily_return(df,dates, plot):
+def daily_return(df,dates, plot= False):
 	df_return = df.copy()
 	df_exp = pd.DataFrame(index = dates)
 	df_exp = df_exp.join(df_return)
@@ -82,9 +82,9 @@ def bollinger_bands(df):
 # df_AZPN = pd.read_csv(path, index_col="Date",parse_dates=True, usecols=["Date", "Adj Close"])
 # df_AZPN = df_AZPN.iloc[::-1]
 
-# dates_2017 = pd.date_range('2017-01-01','2017-12-31')
+# dates_2017 = pd.date_range('2015-01-01','2017-12-31')
 # df_2017 = pd.DataFrame(index = dates_2017)
 # df_2017 = df_2017.join(df_AZPN)
 # df_2017 = df_2017.dropna()
-# cumulative_return(df_2017)
+# bollinger_bands(df_2017)
 

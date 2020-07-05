@@ -35,8 +35,8 @@ def norm_dist(stocks, symbol, dates, plot = False):
 def norm_dist_yearwise(df, symbol, dates, plot=False):
 	df_nor = pd.DataFrame(index = dates)
 	df = df.rename(columns = {"Adj Close" : symbol})
-	df_nor = df_exp.join(df)
-	df_nor = df_exp.dropna()
+	df_nor = df_nor.join(df)
+	df_nor = df_nor.dropna()
 	#Normalizing the Ditribution
 	df_nor= (df_nor)/df_nor.iloc[0]
 	if (plot==True):
