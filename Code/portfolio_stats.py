@@ -17,7 +17,21 @@ pd.options.display.float_format = '{:.3f}'.format
 def symbol_to_path(symbol):
     return os.path.join("/Users/apurvshah/Desktop/Algorithmic_trading/Data/{}.csv".format(str(symbol)))
 
+
+
 def portfolio_val(portfolio , comp, dates , val, plot=False):
+	'''
+	This function takes in 
+	portfolio : a list of stocks in the portfolio
+	comp : a list of composition of the portfolio
+	dates : The range of date for which the request is to be observed
+	val : The starting value of the portfolio at the start date in the date range
+	plot : Whether you want to see the plot of daily returns and price
+
+	This functin returns a dataframe that has the value of each stock adjusted ny composition over the daterange, daily returns and 
+	value of the portfolio, and a stats_dic which has the mean and std of the daily returns and the cumilative return over the 
+	given date range. 
+	'''
 	df_norm  = pd.DataFrame(index = dates)
 
 	for s in portfolio:
@@ -34,9 +48,10 @@ def portfolio_val(portfolio , comp, dates , val, plot=False):
 	df_port = df_norm.join(df_daily)
 	df_daily = df_daily[1:]
 
-	stats_dic = {'mean': 0,"std":0}
+	stats_dic = {'mean': 0,"std":0, 'cr':0}
 	stats_dic['mean'] = df_daily['Daily Return'].values.mean()
 	stats_dic['std'] = df_daily['Daily Return'].values.std()
+	stats_dic['cr'] = ((df_port['Value'].iloc[-1]/df_port['Value'].iloc[0])-1)*100
 	if (plot == True):
 		f1 = plt.figure(1)
 		df_port['Daily Return'].plot(title = "Daily Return of the Portfolio")
@@ -51,11 +66,12 @@ def portfolio_val(portfolio , comp, dates , val, plot=False):
 
 
 #sample run with a random portfolio
- 
+
+''' 
 portfolio = ['MSFT', 'AZPN', 'NFLX', 'GOOGL']
 composition = [0.4 , 0.4, 0.1, 0.1]
 dates =pd.date_range('2017-01-01','2017-12-31')
 start_val = 1000000
-portfolio_val(portfolio, composition , dates, start_val, True)
-
+print(portfolio_val(portfolio, composition , dates, start_val)[1])
+'''
 
