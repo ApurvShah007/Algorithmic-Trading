@@ -26,8 +26,7 @@ def norm_dist(stocks, symbol, dates, plot = False):
 	if plot ==True:
 		df_nor.plot()
 		plt.show()
-	else:
-		return df_nor
+	return df_nor
 	
 #This function first slices out the daterange provided and then uses the first value at the 0th row of the new sliced dataframe as the normalizing value and then 
 #normalizes the entire ditribution based on that and then plots it. 
@@ -42,8 +41,7 @@ def norm_dist_yearwise(df, symbol, dates, plot=False):
 	if (plot==True):
 		df_nor.plot()
 		plt.show()
-	else:
-		return df_nor
+	return df_nor
 
 	
 

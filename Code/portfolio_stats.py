@@ -12,12 +12,12 @@ import os
 import rolling_stats as rs
 import norm_dist as nd
 
-pd.options.display.float_format = '{:.5f}'.format
+pd.options.display.float_format = '{:.3f}'.format
 
 def symbol_to_path(symbol):
     return os.path.join("/Users/apurvshah/Desktop/Algorithmic_trading/Data/{}.csv".format(str(symbol)))
 
-def total_portfolio_val(portfolio , comp, dates ):
+def portfolio_val(portfolio , comp, dates , val, plot=False):
 	df_norm  = pd.DataFrame(index = dates)
 
 	for s in portfolio:
@@ -25,8 +25,27 @@ def total_portfolio_val(portfolio , comp, dates ):
 		df_temp = nd.norm_dist_yearwise(df , s, dates)
 		df_norm = df_norm.join(df_temp)
 		df_norm.dropna(inplace= True)
-	print(df_norm.head())
 
+	df_norm = df_norm*comp*val
+	df_norm['Value'] = df_norm.sum(axis=1)
+
+	df_daily = rs.daily_return(df_norm, "Value", dates)
+	df_daily= pd.DataFrame(df_daily['Daily Return'])
+	df_port = df_norm.join(df_daily)
+	df_daily = df_daily[1:]
+
+	stats_dic = {'mean': 0,"std":0}
+	stats_dic['mean'] = df_daily['Daily Return'].values.mean()
+	stats_dic['std'] = df_daily['Daily Return'].values.std()
+	if (plot == True):
+		f1 = plt.figure(1)
+		df_port['Daily Return'].plot(title = "Daily Return of the Portfolio")
+		f2 = plt.figure(2)
+		df_port['Value'].plot(title = "Value of the Portfolio")
+		plt.show()
+	return df_port, stats_dic
+
+#def sharpe_ratio(portfolio, comp , dates,val, rfi=0):
 
 
 
@@ -36,12 +55,7 @@ def total_portfolio_val(portfolio , comp, dates ):
 portfolio = ['MSFT', 'AZPN', 'NFLX', 'GOOGL']
 composition = [0.4 , 0.4, 0.1, 0.1]
 dates =pd.date_range('2017-01-01','2017-12-31')
-total_portfolio_val(portfolio, composition , dates)
+start_val = 1000000
+portfolio_val(portfolio, composition , dates, start_val, True)
 
 
-# df1 = pd.read_csv(symbol_to_path(s[0]), index_col="Date",parse_dates=True, usecols=["Date", "Adj Close"])
-# df2 = pd.read_csv(symbol_to_path(s[1]), index_col="Date",parse_dates=True, usecols=["Date", "Adj Close"])
-# print(df1.head())
-# print(df2.head())
-# df_norm1 = nd.norm_dist_yearwise(df1 , s[0], dates)
-# print(df_norm1.head())
