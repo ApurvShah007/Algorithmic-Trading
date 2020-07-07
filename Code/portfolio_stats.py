@@ -7,6 +7,7 @@ import statsmodels.api as sm
 import time 
 import math
 import os
+import datetime
 
 #I have imported and used functions from the previous files uploaded in this repository. Many functions are required 
 #for many further implementations and further calculations. 
@@ -73,12 +74,29 @@ def sharpe_ratio(portfolio, comp , dates,val, roi=0, recordings = 'Daily'):
 	k = {'Daily': math.sqrt(252),'Weekly': math.sqrt(52), 'Monthly': math.sqrt(12)}
 	delta = dates[-1]-dates[0]
 	df_port , stats_dic = portfolio_val(portfolio, comp , dates, val)
+	#Weekly recordings Sharpe Ratio
+	if recordings == 'Weekly':
+		week=[]
+		d1 = df_port.index[0]
+		delta = datetime.timedelta(days=7)
+		while d1 < dates[-1]:
+			week.append(str(d1))
+			d1 = d1+delta
+		df_weekly = pd.DataFrame(index = week)
+		df_weekly = df_weekly.join(df_port)
+		df_weekly.dropna(inplace=True)
+		df_w_r = pd.DataFrame(df_weekly['Value'])
+		df_w_r['Weekly Returns'] = ((df_w_r[1:]/df_w_r[:-1].values)-1)*100
+		df_w_r['Weekly Returns'].iloc[0]=0
+		df_w_r['Weekly Returns'] = df_w_r['Weekly Returns'] - roi
+		sharpe_ratio = (df_w_r['Weekly Returns'].values.mean()/df_w_r['Weekly Returns'].values.std())*k["Weekly"]
 
 	#Daily Recordings sharpe ratio
-	df_daily = pd.DataFrame(df_port['Daily Return'])
-	df_daily = df_daily[1:]
-	df_daily = df_daily-roi
-	sharpe_ratio = (df_daily["Daily Return"].values.mean()/stats_dic['std'])*k["Daily"]
+	if recordings == "Daily":
+		df_daily = pd.DataFrame(df_port['Daily Return'])
+		df_daily = df_daily[1:]
+		df_daily = df_daily-roi
+		sharpe_ratio = (df_daily["Daily Return"].values.mean()/stats_dic['std'])*k["Daily"]
 	print(sharpe_ratio)
 
 
@@ -91,8 +109,8 @@ def sharpe_ratio(portfolio, comp , dates,val, roi=0, recordings = 'Daily'):
 
 portfolio = ['MSFT', 'AZPN', 'NFLX', 'GOOGL']
 composition = [0.4 , 0.4, 0.1, 0.1]
-dates =pd.date_range('2017-01-01','2018-01-01')
+dates =pd.date_range('2017-01-01','2019-01-01')
 start_val = 1000000
-sharpe_ratio(portfolio, composition , dates, start_val)
+sharpe_ratio(portfolio, composition , dates, start_val, recordings = 'Weekly')
 
 
