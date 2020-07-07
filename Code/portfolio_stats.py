@@ -5,6 +5,7 @@ import numpy as np
 import talib
 import statsmodels.api as sm 
 import time 
+import math
 import os
 
 #I have imported and used functions from the previous files uploaded in this repository. Many functions are required 
@@ -28,7 +29,7 @@ def portfolio_val(portfolio , comp, dates , val, plot=False):
 	val : The starting value of the portfolio at the start date in the date range
 	plot : Whether you want to see the plot of daily returns and price
 
-	This functin returns a dataframe that has the value of each stock adjusted ny composition over the daterange, daily returns and 
+	This function returns a dataframe that has the value of each stock adjusted ny composition over the daterange, daily returns and 
 	value of the portfolio, and a stats_dic which has the mean and std of the daily returns and the cumilative return over the 
 	given date range. 
 	'''
@@ -60,18 +61,38 @@ def portfolio_val(portfolio , comp, dates , val, plot=False):
 		plt.show()
 	return df_port, stats_dic
 
-#def sharpe_ratio(portfolio, comp , dates,val, rfi=0):
+
+def sharpe_ratio(portfolio, comp , dates,val, roi=0, recordings = 'Daily'):
+	'''
+	Sharpe Ratio = k*(mean(daily returns-roi)/ std(daily returns))
+	k = sqrt(252)(Daily)
+	k = sqrt(52)(Weekly)
+	k = sqrt(12)(Monthly)
+	k = 1 (Yearly)
+	'''
+	k = {'Daily': math.sqrt(252),'Weekly': math.sqrt(52), 'Monthly': math.sqrt(12)}
+	delta = dates[-1]-dates[0]
+	df_port , stats_dic = portfolio_val(portfolio, comp , dates, val)
+
+	#Daily Recordings sharpe ratio
+	df_daily = pd.DataFrame(df_port['Daily Return'])
+	df_daily = df_daily[1:]
+	df_daily = df_daily-roi
+	sharpe_ratio = (df_daily["Daily Return"].values.mean()/stats_dic['std'])*k["Daily"]
+	print(sharpe_ratio)
+
+
 
 
 
 
 #sample run with a random portfolio
 
-''' 
+
 portfolio = ['MSFT', 'AZPN', 'NFLX', 'GOOGL']
 composition = [0.4 , 0.4, 0.1, 0.1]
-dates =pd.date_range('2017-01-01','2017-12-31')
+dates =pd.date_range('2017-01-01','2018-01-01')
 start_val = 1000000
-print(portfolio_val(portfolio, composition , dates, start_val)[1])
-'''
+sharpe_ratio(portfolio, composition , dates, start_val)
+
 
