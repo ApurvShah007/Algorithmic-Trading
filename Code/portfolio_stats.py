@@ -65,11 +65,21 @@ def portfolio_val(portfolio , comp, dates , val, plot=False):
 
 def sharpe_ratio(portfolio, comp , dates,val, roi=0, recordings = 'Daily'):
 	'''
+	This function takes in :
+	portfolio : a list of stocks in the portfolio
+	comp : a list of composition of the portfolio
+	dates : The range of date for which the request is to be observed
+	val : The starting value of the portfolio at the start date in the date range
+	recordings : The frequency of recordings and the subsequent annualizing factor
+
 	Sharpe Ratio = k*(mean(daily returns-roi)/ std(daily returns))
 	k = sqrt(252)(Daily)
 	k = sqrt(52)(Weekly)
 	k = sqrt(12)(Monthly)
 	k = 1 (Yearly)
+	Sharpe Ratio is a good measure of rreward against risk of a portfolio. A Sharpe ratio of 1 considered good, 2 is considered 
+	great and 3 or above is considered excellent. Subtracting the risk-free rate from the mean return allows an investor to better
+	isolate the profits associated with risk-taking activities
 	'''
 	k = {'Daily': math.sqrt(252),'Weekly': math.sqrt(52), 'Monthly': math.sqrt(12)}
 	delta = dates[-1]-dates[0]
@@ -97,6 +107,8 @@ def sharpe_ratio(portfolio, comp , dates,val, roi=0, recordings = 'Daily'):
 		df_daily = df_daily[1:]
 		df_daily = df_daily-roi
 		sharpe_ratio = (df_daily["Daily Return"].values.mean()/stats_dic['std'])*k["Daily"]
+	if recordings = "Monthly":
+
 	print(sharpe_ratio)
 
 
@@ -106,11 +118,12 @@ def sharpe_ratio(portfolio, comp , dates,val, roi=0, recordings = 'Daily'):
 
 #sample run with a random portfolio
 
-
+'''
 portfolio = ['MSFT', 'AZPN', 'NFLX', 'GOOGL']
 composition = [0.4 , 0.4, 0.1, 0.1]
-dates =pd.date_range('2017-01-01','2019-01-01')
+dates =pd.date_range('2017-01-01','2018-01-01')
 start_val = 1000000
-sharpe_ratio(portfolio, composition , dates, start_val, recordings = 'Weekly')
+sharpe_ratio(portfolio, composition , dates, start_val)
+'''
 
 
