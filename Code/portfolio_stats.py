@@ -2,11 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import numpy as np
-import talib
 import statsmodels.api as sm 
 import time 
 import math
-import os
 import datetime
 
 #I have imported and used functions from the previous files uploaded in this repository. Many functions are required 
