@@ -13,7 +13,10 @@ import os
 import rolling_stats as rs
 import norm_dist as nd
 
-
+def get_data_close(symbol):
+    stock = yf.Ticker(symbol)
+    df = stock.history(period="max")
+    return pd.DataFrame(df['Close'])
 
 def plot_hist_with_stats(stocks, dates, m = False, bins = 20):
     '''

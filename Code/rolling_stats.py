@@ -10,6 +10,10 @@ import os
 
 pd.options.display.float_format = '{:.5f}'.format
 
+def get_data_close(symbol):
+    stock = yf.Ticker(symbol)
+    df = stock.history(period="max")
+    return pd.DataFrame(df['Close'])
 
 def daily_return(symbol, dates, plot= False):
     '''

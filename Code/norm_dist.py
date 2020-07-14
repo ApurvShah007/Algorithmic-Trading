@@ -8,8 +8,17 @@ import time
 import yfinance as yf
 import os
 
-
 pd.options.display.float_format = '{:.5f}'.format
+
+def get_data_close(symbol):
+    '''
+    This function uses the very convinient ticker object to get the latest data of the underlying stock passed in to this function
+    '''
+    stock = yf.Ticker(symbol)
+    df = stock.history(period="max")
+    return pd.DataFrame(df['Close'])
+
+
 def norm_dist_yearwise(symbol, dates, plot=False):
     '''
     This function first slices out the daterange provided and then uses the first value at the 0th row of the new sliced dataframe as the normalizing value and then 
