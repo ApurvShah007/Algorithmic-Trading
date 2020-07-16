@@ -1,4 +1,4 @@
-# Algorithmic_trading
+# Algorithmic Trading
 
 I have been deeply interested in algorithmic trading and systematic trading algorithms. This Repository contains the code of what I have learnt on the way. It starts form some basic simple statistics and will lead up to complex machine learning algorithms. The code majorly uses the pandas and the [yfinance](https://github.com/ranaroussi/yfinance) libraries.
 
