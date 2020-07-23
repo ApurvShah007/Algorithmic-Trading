@@ -102,7 +102,7 @@ def sharpe_ratio(portfolio, comp , dates,val, roi=0, recordings = 'Daily'):
         df_daily = df_daily[1:]
         df_daily = df_daily-roi
         sharpe_ratio = (df_daily["Daily Return"].values.mean()/stats_dic['std'])*k["Daily"]
-    if recordings = "Monthly":
+    # if recordings = "Monthly":
 
     print(sharpe_ratio)
 
