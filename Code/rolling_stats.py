@@ -8,6 +8,8 @@ import time
 import yfinance as yf
 import os
 
+
+
 pd.options.display.float_format = '{:.5f}'.format
 
 def get_data_close(symbol):
