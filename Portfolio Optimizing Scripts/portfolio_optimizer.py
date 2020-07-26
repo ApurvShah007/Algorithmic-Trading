@@ -51,7 +51,7 @@ print("\n")
 #Optimization 
 mu = returns.mean() * 252
 S = risk_models.sample_cov(df)
-ef = EfficientFrontier(mu, S)
+ef = EfficientFrontier(mu, S, weight_bounds=(-1,1))
 weights = ef.max_sharpe()
 cleaned_weights = dict(ef.clean_weights())
 print(cleaned_weights)
@@ -60,7 +60,7 @@ print("\n")
 
 #Current best allocations
 latest_prices = get_latest_prices(df)
-#weights = cleaned_weights 
+weights = cleaned_weights 
 da = DiscreteAllocation(weights, latest_prices, total_portfolio_value=15000)
 print(da)
 allocation, leftover = da.lp_portfolio()
