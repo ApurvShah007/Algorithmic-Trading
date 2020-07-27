@@ -43,13 +43,13 @@ def plot_hist_with_stats(stocks, dates, m = False, bins = 20):
 
 
 def plot_scatter(stocks, dates):
-	'''
-	This function takes in a list of pair of stocks between which the alpha and beta is to be found and a line of best fit is to be plotted.
-	The daily returns of both the stocks are calculated from the function from rolling_stats.py and then graphed against each other. This 
-	function is mainly used to plot any stock against the S&P 500 or Dow Jones Index stocks to get a sens eof how well the stock is 
-	doing with respect to the market and how reactive it is to the market movements. 
-	This function accepts 2 para,eters : stocks - A list of lists of size 2, dates - The daterange for the scatter plot.
-	'''
+    '''
+    This function takes in a list of pair of stocks between which the alpha and beta is to be found and a line of best fit is to be plotted.
+    The daily returns of both the stocks are calculated from the function from rolling_stats.py and then graphed against each other. This 
+    function is mainly used to plot any stock against the S&P 500 or Dow Jones Index stocks to get a sens eof how well the stock is 
+    doing with respect to the market and how reactive it is to the market movements. 
+    This function accepts 2 para,eters : stocks - A list of lists of size 2, dates - The daterange for the scatter plot.
+    '''
     for s in stocks:
         df_return1 = rs.daily_return(s[0], dates, False)
         df_return1 = df_return1.rename(columns= {"Daily Return": s[0]})
