@@ -11,6 +11,11 @@ from pypfopt import CLA
 from pypfopt.discrete_allocation import DiscreteAllocation, get_latest_prices
 
 
+#-----------TODO -------------
+# 1. Plot the Efficient Frontier witha CLA object
+# 2. Implement the min_volatilty optimization in optimizePortSharpe()
+# 3. Implement the new function for using the CLA optimizer solution
+
 #Taking an example portfolio of FAANG
 def getData(portfolio):
 	df = pd.DataFrame()
@@ -43,9 +48,19 @@ def basicStats(df, weights):
 	print('Annual volatility/standard deviation/risk : ',percent_vols)
 	print('Annual variance : ',percent_var)
 	print("\n")
+# def omptimizePortCLA():
+def getDiscrete(df, weights):
+	latest_prices = get_latest_prices(df)
+	#plotting.plot_weights(weights)
+	total_portfolio_value  = 15000
+	da = DiscreteAllocation(weights, latest_prices, total_portfolio_value=total_portfolio_value)
+	allocation, leftover = da.lp_portfolio()
 
-def optimizePortSharpe(port, weights, start, plot = False, short = False, printBasicStats=True):
+	print("Best portfolio possible today for the given shares and given contraints for an investment of ", total_portfolio_value, ": ")
+	print("Shares allocation:", allocation)
+	print("Funds remaining: ${:.2f}".format(leftover))
 
+def optimizePortEfficient(port, weights, start, plot = False, short = False, printBasicStats=True, how = 'Sharpe'):
 	#Getting Datat
 	df = getData(port)
 	#Plotting the portfolio
@@ -62,30 +77,33 @@ def optimizePortSharpe(port, weights, start, plot = False, short = False, printB
 		bounds = (0,1)
 	mu = df.pct_change().mean() * 252
 	S = risk_models.sample_cov(df)
-	ef = EfficientFrontier(mu, S, weight_bounds=bounds) #Here the weight bounds are being used to allow short positions as well
-	weights = ef.max_sharpe()
-	cleaned_weights = dict(ef.clean_weights())
 
-	print("Weights of an optimal portfolio :")
-	print(cleaned_weights)
-	ef.portfolio_performance(verbose = True)
-	print("\n")
+	if how == 'Sharpe':
+		# Maximized on Sharpe Ratio
+		ef = EfficientFrontier(mu, S, weight_bounds=bounds) #Here the weight bounds are being used to allow short positions as well
+		weights = ef.max_sharpe()
+		cleaned_weights = dict(ef.clean_weights())
+		print("Weights of an optimal portfolio maximised on Sharpe Ratio:")
+		print(cleaned_weights)
+		ef.portfolio_performance(verbose = True)
+		getDiscrete(df, weights)
+
+	how = "Vol"
+	if how == "Vol":
+		# Minimized on Volatility
+		efi = EfficientFrontier(mu, S, weight_bounds=(-1,1))
+		w = dict(efi.min_volatility())
+		print("\nWeights of an optimal portfolio minimized on Volatilty (Risk):")
+		print(w)
+		efi.portfolio_performance(verbose = True)
+		getDiscrete(df, w)
 
 	#Current best allocations
-	latest_prices = get_latest_prices(df)
-	weights = cleaned_weights 
-	total_portfolio_value  = 15000
-	da = DiscreteAllocation(weights, latest_prices, total_portfolio_value=total_portfolio_value)
-	allocation, leftover = da.lp_portfolio()
-
-	print("Best portfolio possible today for the given shares for an investment of ", total_portfolio_value, ": ")
-	print("Discrete allocation:", allocation)
-	print("Funds remaining: ${:.2f}".format(leftover))
 
 
 # an Example FAANG portfolio with equal weights
 portfolio = ['FB', "AAPL", "AMZN", 'NFLX', 'GOOG']
 weights = np.array([0.2,0.2,0.2,0.2,0.2])
 start = '2013-01-01'
-optimizePortSharpe(portfolio, weights, start)
+optimizePortEfficient(portfolio, weights, start)
 
