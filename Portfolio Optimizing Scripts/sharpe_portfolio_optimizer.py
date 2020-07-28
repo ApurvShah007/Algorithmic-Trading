@@ -87,8 +87,6 @@ def optimizePortEfficient(port, weights, start, plot = False, short = False, pri
 		print(cleaned_weights)
 		ef.portfolio_performance(verbose = True)
 		getDiscrete(df, weights)
-
-	how = "Vol"
 	if how == "Vol":
 		# Minimized on Volatility
 		efi = EfficientFrontier(mu, S, weight_bounds=(-1,1))
