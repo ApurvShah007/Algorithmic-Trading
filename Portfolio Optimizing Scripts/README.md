@@ -1,0 +1,1 @@
+This is my attempt of using Backtracking and other smart algorithms to create an optimized portfolio. The scripts in this folder are based on the Morder Portfolio Theory where the program helps the investors to create a diverse portfolio and maximizes on Returns and Risk Aversion. 
