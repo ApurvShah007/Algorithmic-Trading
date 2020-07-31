@@ -48,8 +48,11 @@ def basicStats(df, weights):
 	print('Annual volatility/standard deviation/risk : ',percent_vols)
 	print('Annual variance : ',percent_var)
 	print("\n")
-# def omptimizePortCLA():
-def getDiscrete(df, weights):
+
+def omptimizePortCLA():
+
+
+def getDiscreteAllocations(df, weights):
 	latest_prices = get_latest_prices(df)
 	#plotting.plot_weights(weights)
 	total_portfolio_value  = 15000
@@ -86,7 +89,7 @@ def optimizePortEfficient(port, weights, start, plot = False, short = False, pri
 		print("Weights of an optimal portfolio maximised on Sharpe Ratio:")
 		print(cleaned_weights)
 		ef.portfolio_performance(verbose = True)
-		getDiscrete(df, weights)
+		getDiscreteAllocations(df, weights)
 	if how == "Vol":
 		# Minimized on Volatility
 		efi = EfficientFrontier(mu, S, weight_bounds=(-1,1))
@@ -94,7 +97,7 @@ def optimizePortEfficient(port, weights, start, plot = False, short = False, pri
 		print("\nWeights of an optimal portfolio minimized on Volatilty (Risk):")
 		print(w)
 		efi.portfolio_performance(verbose = True)
-		getDiscrete(df, w)
+		getDiscreteAllocations(df, w)
 
 	#Current best allocations
 
@@ -103,5 +106,5 @@ def optimizePortEfficient(port, weights, start, plot = False, short = False, pri
 portfolio = ['FB', "AAPL", "AMZN", 'NFLX', 'GOOG']
 weights = np.array([0.2,0.2,0.2,0.2,0.2])
 start = '2013-01-01'
-optimizePortEfficient(portfolio, weights, start)
+optimizePortEfficient(portfolio, weights, start, how = "Vol")
 
