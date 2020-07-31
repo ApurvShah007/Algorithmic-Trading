@@ -14,6 +14,8 @@ I have been deeply interested in algorithmic trading and systematic portfolio ma
 
 Many of these files contain functions that have been used in further files so the code duplication is minimum. Anyone is welcome to download these files and import and use them in their own endeavours. Anyone interested can learn from this or contribute to it to make this repository a valuable resource. If you do end up using the code here for your own project, do leave a mention and star this repo and be on the lookout for more uodates on this repo. 
 
+All portfolio related functions and optimization scripts have been moved over to my [portfolio-optimizer](https://github.com/ApurvShah007/portfolio-optimizer
+) repository. Please visit that if you are interested in systematics portfolio management and optimizations. 
 
 [![HitCount](http://hits.dwyl.com/ApurvShah007/Algorithmic_trading.svg)](http://hits.dwyl.com/ApurvShah007/Algorithmic_trading)
 
