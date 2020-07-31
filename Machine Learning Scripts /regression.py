@@ -7,7 +7,6 @@ from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 from matplotlib import style
 from datetime import datetime, timedelta
-import pickle
 import yfinance as yf
 
 style.use('ggplot')
