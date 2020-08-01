@@ -16,6 +16,13 @@ Many of these files contain functions that have been used in further files so th
 
 All portfolio related functions and optimization scripts have been moved over to my [portfolio-optimizer](https://github.com/ApurvShah007/portfolio-optimizer
 ) repository. Please visit that if you are interested in systematics portfolio management and optimizations. 
+<br />
+<br />
+## Contents
+- [Machine Learning Models](https://github.com/ApurvShah007/Algorithmic_trading/tree/master/Machine%20Learning%20Scripts%20)
+- [Options Fair Pricing](https://github.com/ApurvShah007/Algorithmic_trading/tree/master/options-fair-price-valuation)
+- [Portfolio Optimization](https://github.com/ApurvShah007/Algorithmic_trading/tree/master/Portfolio%20Optimizing%20Scripts)
+- [Basic Analytics](https://github.com/ApurvShah007/Algorithmic_trading/tree/master/Code)
 
 [![HitCount](http://hits.dwyl.com/ApurvShah007/Algorithmic_trading.svg)](http://hits.dwyl.com/ApurvShah007/Algorithmic_trading)
 
