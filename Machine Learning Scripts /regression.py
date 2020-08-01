@@ -59,10 +59,11 @@ def Regression(symbol):
 	plt.legend(loc=4)
 	plt.xlabel('Date')
 	plt.ylabel('Price')
+	plt.title("Forcast vs Actual price")
 	plt.show()
 
 
-Regression("AZPN")
+Regression("FB")
 
 
 
