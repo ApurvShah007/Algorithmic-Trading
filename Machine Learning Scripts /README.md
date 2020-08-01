@@ -1,3 +1,8 @@
+<p align="center">
+ <img width="100px" src="https://res.cloudinary.com/anuraghazra/image/upload/v1594908242/logo_ccswme.svg" align="center" alt="Algorithmic Trading" />
+ <h2 align="center">Machine Learning</h2>
+</p>
+
 This folder contains many machine-learning methods and approaches to make simple meaningful predictions of Stopck prices using multiple technical indicators. I wish to expand it to include all methods from basic regression to the more complex model up to the point where I build an NLP model to parse through the quarter realeses and other rnews. 
 
 Methods already implemented:
