@@ -27,5 +27,7 @@ All portfolio related functions and optimization scripts have been moved over to
 - [Portfolio Optimization](https://github.com/ApurvShah007/Algorithmic_trading/tree/master/Portfolio%20Optimizing%20Scripts)
 - [Basic Analytics](https://github.com/ApurvShah007/Algorithmic_trading/tree/master/Code)
 
+<p align="center"><a href="https://github.com/nastyox/Rando.js#nastyox"><img src="http://randojs.com/images/barsSmall.gif" alt="Animated footer bars" width="100%"/></a></p>
+
 [![HitCount](http://hits.dwyl.com/ApurvShah007/Algorithmic_trading.svg)](http://hits.dwyl.com/ApurvShah007/Algorithmic_trading)
 
