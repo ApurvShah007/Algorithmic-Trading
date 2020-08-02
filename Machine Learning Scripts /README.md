@@ -21,12 +21,18 @@ These are the predictions for the next 50 days. It predicts that the value of AZ
 <image src = "fb.png" />
 <br />
 <br />
+3. LSTM based RNN model
+<br />
+<br />
+<image src = "LSTM.png" />
+<br />
+<br />
 
 Methods that I am working on :
 1. Random Forest Classifier
 2. Q-learning to simple make a simple choice - Buy, Sell or Hold.
 3. KNN 
-4. LSTM
+
 
 Methods I wish to implement: 
 1. RNN
