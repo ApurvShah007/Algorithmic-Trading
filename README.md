@@ -7,7 +7,6 @@
 ![Last Commit](https://img.shields.io/github/last-commit/ApurvShah007/Algorithmic_trading)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ApurvShah007/Algorithmic_trading?color=red)
 ![Maintained](https://img.shields.io/maintenance/yes/2020)
-![Issues](https://img.shields.io/github/issues/ApurvShah007/Algorithmic_trading)
 
 <img src="https://img.shields.io/badge/python%20-%2314354C.svg?&style=for-the-badge&logo=python&logoColor=white"/>
 </br>
