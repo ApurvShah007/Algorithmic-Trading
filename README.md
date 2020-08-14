@@ -28,5 +28,5 @@ All portfolio related functions and optimization scripts have been moved over to
 
 <p align="center"><a href="https://github.com/nastyox/Rando.js#nastyox"><img src="http://randojs.com/images/barsSmall.gif" alt="Animated footer bars" width="100%"/></a></p>
 
-[![HitCount](http://hits.dwyl.com/ApurvShah007/Algorithmic_trading.svg)](http://hits.dwyl.com/ApurvShah007/Algorithmic-Trading)
+[![HitCount](http://hits.dwyl.com/ApurvShah007/Algorithmic-Trading.svg)](http://hits.dwyl.com/ApurvShah007/Algorithmic-Trading)
 
